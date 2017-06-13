@@ -10,10 +10,9 @@ resource_types:
     repository: tenten0213/s3-resource-simple
 resources:
 - name: scripts
-  type: git
+  type: archive
   source:
-    uri: https://github.com/tenten0213/s3-resource-simple
-    branch: scripts
+    uri: https://github.com/tenten0213/s3-resource-simple/archive/1.1.1.tar.gz
 - name: s3-bucket
   type: s3
   source:
@@ -21,7 +20,7 @@ resources:
     secret_access_key: {{aws-secret-key}}
     bucket: {{aws-bucket}}
     endpoint: {{aws-s3-endpoint}}
-#    use_v4: true
+    use_v4: true
 jobs:
 - name: custom-resource-example
   plan:
