@@ -1,18 +1,18 @@
 # Pipeline that clones this repository, then uploads it to S3. Local usage:
 #
-#   fly set-pipeline -t lite -n -c test/pipeline.yml -p s3-resource-simple-test -v access_key_id=<key> -v secret_access_key=<secret> -v aws-bucket=<bucket>
+#   fly set-pipeline -t lite -n -c test/pipeline.yml -p s3-resource-simple-test -v aws-access-key=minio -v aws-secret-key=minio123 -v aws-bucket=report -v aws-s3-endpoint=http://localhost:9000/minio/
 bucket: {{aws-bucket}}
 #
 resource_types:
 - name: s3-upload
   type: docker-image
   source:
-    repository: making/s3-resource-simple
+    repository: tenten0213/s3-resource-simple
 resources:
 - name: scripts
   type: git
   source:
-    uri: https://github.com/making/s3-resource-simple
+    uri: https://github.com/tenten0213/s3-resource-simple
     branch: master
 - name: s3-bucket
   type: s3-upload
