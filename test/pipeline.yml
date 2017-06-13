@@ -1,7 +1,6 @@
 # Pipeline that clones this repository, then uploads it to S3. Local usage:
 #
 #   fly set-pipeline -t lite -n -c test/pipeline.yml -p s3-resource-simple-test -v aws-access-key=minio -v aws-secret-key=minio123 -v aws-bucket=report -v aws-s3-endpoint=http://localhost:9000/minio/
-bucket: {{aws-bucket}}
 #
 resource_types:
 - name: s3-upload
