@@ -13,15 +13,15 @@ resources:
   type: git
   source:
     uri: https://github.com/tenten0213/s3-resource-simple
-    branch: master
+    branch: scripts
 - name: s3-bucket
-  type: s3-upload
+  type: s3
   source:
     access_key_id: {{aws-access-key}}
     secret_access_key: {{aws-secret-key}}
     bucket: {{aws-bucket}}
     endpoint: {{aws-s3-endpoint}}
-    use_v4: true
+#    use_v4: true
 jobs:
 - name: custom-resource-example
   plan:
