@@ -18,6 +18,7 @@ concourse-web:
     CONCOURSE_EXTERNAL_URL: http://localhsot:8080
     CONCOURSE_POSTGRES_DATA_SOURCE: |-
       postgres://concourse:changeme@concourse-db:5432/concourse?sslmode=disable
+
 concourse-worker:
   image: concourse/concourse
   privileged: true
@@ -29,10 +30,8 @@ concourse-worker:
 
 minio:
   image: minio/minio:RELEASE.2017-05-05T01-14-51Z
-  volumes:
-    - ./minio-data:/export
-  ports:
-    - "9000:9000"
+  volumes: ["./minio-data:/export"]
+  ports: ["9000:9000"]
   environment:
     MINIO_ACCESS_KEY: minio
     MINIO_SECRET_KEY: minio123
